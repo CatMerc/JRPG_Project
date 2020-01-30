@@ -4,23 +4,12 @@ namespace JRPGProject
 {
 	public struct XYCoord
 	{
-		private int _x;
-		private int _y;
-
-		public int x
-		{
-			get { return _x; }
-			set { _x = value; }
-		}
-		public int y
-		{
-			get { return _y; }
-			set { _y = value; }
-		}
+		public int X { get; set; }
+		public int Y { get; set; }
 
 		public double GetDist(int x, int y)
 		{
-			return Math.Sqrt(_x * _y + x * y);
+			return Math.Sqrt(X * Y + x * y);
 		}
 	}
 
@@ -36,13 +25,13 @@ namespace JRPGProject
 	// Defines the screen area
 	public class ScreenSpace
 	{
-		private int width;
-		private int height;
+		private int Width;
+		private int Height;
 		//private XYCoord _xy;
 		public ScreenSpace(int width, int height)
 		{
-			this.width = width;
-			this.height = height;
+			Width = width;
+			Height = height;
 		}
 	}
 
