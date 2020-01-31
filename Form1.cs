@@ -10,11 +10,14 @@ using System.Windows.Forms;
 
 namespace JRPGProject
 {
+    
     public partial class Form1 : Form
     {
+        public PictureBox pictureBox1;
         public Form1()
         {
             InitializeComponent();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
         }
     }
 }

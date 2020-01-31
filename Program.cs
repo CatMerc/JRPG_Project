@@ -27,6 +27,7 @@ namespace JRPGProject
             thread.Start();
             Application.Run(form);    
         }
+
         public static void debugTest(InputHandling input, ref Form1 form)
         {
             while (true)
@@ -38,7 +39,13 @@ namespace JRPGProject
                         form.BackColor = Color.Black;
                         break;
                     case (Direction.down):
-                        form.BackColor = Color.White;
+                        form.BackColor = Color.Green;
+                        break;
+                    case (Direction.left):
+                        form.BackColor = Color.Blue;
+                        break;
+                    case (Direction.right):
+                        form.BackColor = Color.Firebrick;
                         break;
                     default:
                         form.BackColor = Color.White;
