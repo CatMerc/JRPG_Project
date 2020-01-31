@@ -11,6 +11,7 @@ namespace JRPGProject
 		public int Health { get; set; }
 		public bool Mortal { get; set; }
 		public bool Passable { get; set; }
+		public double Velocity { get; set; }
 		public Entity()
 		{
 		}
