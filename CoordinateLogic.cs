@@ -2,7 +2,7 @@
 
 namespace JRPGProject
 {
-	public struct XYCoord
+	public class XYCoord
 	{
 		public int X { get; set; }
 		public int Y { get; set; }

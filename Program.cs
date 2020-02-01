@@ -32,37 +32,53 @@ namespace JRPGProject
         public static void PlayerControls(PlayerCharacter pc, ref Form1 form)
         {
             //OctaDirection Direction = pc.Controls.Direction;
+            ref XYCoord XY = ref pc.Controls.XY;
             while (!AppStatus.KillThread)
             {
-                switch (pc.Controls.Direction)
+                if (XY.Y == 1)
                 {
-                    case CurrentControl.GoUp:
+                    if (XY.X == 0)
+                    {
                         form.BackColor = Color.Yellow;
-                        break;
-                    case CurrentControl.GoDown:
-                        form.BackColor = Color.Purple;
-                        break;
-                    case CurrentControl.GoRight:
-                        form.BackColor = Color.Orange;
-                        break;
-                    case CurrentControl.GoLeft:
-                        form.BackColor = Color.LightBlue;
-                        break;
-                    case CurrentControl.GoUpRight:
+                    }
+                    else if (XY.X == 1)
+                    {
                         form.BackColor = Color.FromArgb(235, 207, 52);
-                        break;
-                    case CurrentControl.GoUpLeft:
+                    }
+                    else if (XY.X == -1)
+                    {
                         form.BackColor = Color.Green;
-                        break;
-                    case CurrentControl.GoDownLeft:
-                        form.BackColor = Color.DeepSkyBlue;
-                        break;
-                    case CurrentControl.GoDownRight:
+                    }
+                }
+                else if (XY.Y == -1)
+                {
+                    if (XY.X == 0)
+                    {
+                        form.BackColor = Color.Purple;
+                    }
+                    else if (XY.X == 1)
+                    {
                         form.BackColor = Color.Red;
-                        break;
-                    case CurrentControl.None:
+                    }
+                    else if (XY.X == -1)
+                    {
+                        form.BackColor = Color.DeepSkyBlue;
+                    }
+                }
+                else
+                {
+                    if (XY.X == 0)
+                    {
                         form.BackColor = Color.White;
-                        break;
+                    }
+                    else if (XY.X == 1)
+                    {
+                        form.BackColor = Color.Orange;
+                    }
+                    else if (XY.X == -1)
+                    {
+                        form.BackColor = Color.LightBlue;
+                    }
                 }
             }
 

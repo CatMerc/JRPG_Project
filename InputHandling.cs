@@ -89,65 +89,29 @@ namespace JRPGProject
             return this;
         }
     }
-    public enum CurrentControl
-    {
-        None,
-        GoRight,
-        GoLeft,
-        GoUp,
-        GoDown,
-        GoUpRight,
-        GoUpLeft,
-        GoDownRight,
-        GoDownLeft
-    }
+
     public class Controls
     {
-        public CurrentControl Direction;
-        // Logic to determine which direction to go based upon keyboard status
+        public XYCoord XY = new XYCoord();
         public void Evaluate(Keyboard keyboard)
         {
-            if (keyboard.UpArrow && !keyboard.DownArrow)
+            XY.Y = 0;
+            XY.X = 0;
+            if (keyboard.UpArrow)
             {
-                if (keyboard.LeftArrow && !keyboard.RightArrow)
-                {
-                    Direction = CurrentControl.GoUpLeft;
-                }
-                else if (keyboard.RightArrow && !keyboard.LeftArrow)
-                {
-                    Direction = CurrentControl.GoUpRight;
-                }
-                else
-                {
-                    Direction = CurrentControl.GoUp;
-                }
+                XY.Y += 1;
             }
-            else if (keyboard.DownArrow && !keyboard.UpArrow)
+            if (keyboard.DownArrow)
             {
-                if (keyboard.LeftArrow && !keyboard.RightArrow)
-                {
-                    Direction = CurrentControl.GoDownLeft;
-                }
-                else if (keyboard.RightArrow && !keyboard.LeftArrow)
-                {
-                    Direction = CurrentControl.GoDownRight;
-                }
-                else
-                {
-                    Direction = CurrentControl.GoDown;
-                }
+                XY.Y -= 1;
             }
-            else if (keyboard.LeftArrow && !keyboard.RightArrow)
+            if (keyboard.RightArrow)
             {
-                Direction = CurrentControl.GoLeft;
+                XY.X += 1;
             }
-            else if (keyboard.RightArrow && !keyboard.LeftArrow)
+            if (keyboard.LeftArrow)
             {
-                Direction = CurrentControl.GoRight;
-            }
-            else
-            {
-                Direction = CurrentControl.None;
+                XY.X -= 1;
             }
         }
     }
