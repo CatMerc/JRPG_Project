@@ -18,38 +18,56 @@ namespace JRPGProject
         [STAThread]
         static void Main()
         {
-            Debug.WriteLine("yes");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Form1 form = new Form1();
-            InputHandling input = new InputHandling(form);
-            Thread thread = new Thread(() => { debugTest(input, ref form); });
+            //InputHandling input = new InputHandling(form);
+            PlayerCharacter character = new PlayerCharacter(form);
+            Thread thread = new Thread(() => { debugTest(character, ref form); });
             thread.Start();
             Application.Run(form);    
         }
 
-        public static void debugTest(InputHandling input, ref Form1 form)
+        public static void debugTest(PlayerCharacter pc, ref Form1 form)
         {
+            Controls controls = pc.GetControls();
             while (true)
             {
-                Debug.WriteLine(input.State);
-                switch (input.State)
+                if (controls.GoUp)
                 {
-                    case (Direction.up):
-                        form.BackColor = Color.Black;
-                        break;
-                    case (Direction.down):
-                        form.BackColor = Color.Green;
-                        break;
-                    case (Direction.left):
-                        form.BackColor = Color.Blue;
-                        break;
-                    case (Direction.right):
-                        form.BackColor = Color.Firebrick;
-                        break;
-                    default:
-                        form.BackColor = Color.White;
-                        break;
+                    form.BackColor = Color.DarkGreen;
+                }
+                else if (controls.GoDown)
+                {
+                    form.BackColor = Color.Chocolate;
+                }
+                else if (controls.GoRight)
+                {
+                    form.BackColor = Color.Black;
+                }
+                else if (controls.GoLeft)
+                {
+                    form.BackColor = Color.Red;
+                }
+                else if (controls.GoUpRight)
+                {
+                    form.BackColor = Color.IndianRed;
+                }
+                else if (controls.GoUpLeft)
+                {
+                    form.BackColor = Color.Moccasin;
+                }
+                else if (controls.GoDownLeft)
+                {
+                    form.BackColor = Color.Honeydew;
+                }
+                else if (controls.GoDownRight)
+                {
+                    form.BackColor = Color.Tomato;
+                }
+                else
+                {
+                    form.BackColor = Color.White;
                 }
             }
         }

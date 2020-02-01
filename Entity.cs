@@ -54,5 +54,15 @@ namespace JRPGProject
     {
 		private object _controls; // Placeholder code
 		public List<object> Inventory = new List<object>(); // List of objects
+		InputHandling input;
+		public PlayerCharacter(Form1 form)
+		{
+			input = new InputHandling(form);
+
+		}
+		public Controls GetControls()
+		{
+			return input.GetControls();
+		}
     }
 }
