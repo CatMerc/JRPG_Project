@@ -52,9 +52,8 @@ namespace JRPGProject
 
 	public class PlayerCharacter : Character
     {
-		private object _controls; // Placeholder code
 		public List<object> Inventory = new List<object>(); // List of objects
-		InputHandling input;
+		readonly InputHandling input;
 		public PlayerCharacter(Form1 form)
 		{
 			input = new InputHandling(form);

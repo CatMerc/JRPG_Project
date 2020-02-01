@@ -12,6 +12,10 @@ namespace JRPGProject
 {
     static class Program
     {
+        public struct AppStatus
+        {
+            public static bool KillThread { get; set; } = false;
+        }
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -25,13 +29,14 @@ namespace JRPGProject
             PlayerCharacter character = new PlayerCharacter(form);
             Thread thread = new Thread(() => { debugTest(character, ref form); });
             thread.Start();
-            Application.Run(form);    
+            Application.Run(form);
+            AppStatus.KillThread = true;
         }
 
         public static void debugTest(PlayerCharacter pc, ref Form1 form)
         {
             Controls controls = pc.GetControls();
-            while (true)
+            while (!AppStatus.KillThread)
             {
                 if (controls.GoUp)
                 {
