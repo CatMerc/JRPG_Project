@@ -16,10 +16,16 @@ namespace JRPGProject
 	public struct Direction
     {
 		// Arrow Win32 Keyboard values
-		public const int up = 0x26;
-		public const int down = 0x28;
-		public const int left = 0x25;
-		public const int right = 0x27;
+		//public const int up = 0x26;
+		//public const int down = 0x28;
+		//public const int left = 0x25;
+		//public const int right = 0x27;
+
+		// WASD Win32 Keyboard Values
+		public const int up = 0x57;
+		public const int down = 0x53;
+		public const int left = 0x41;
+		public const int right = 0x44;
 	}
 
 	// Defines the screen area
