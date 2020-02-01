@@ -13,7 +13,7 @@ namespace JRPGProject
 		}
 	}
 
-	public struct Direction
+	public struct Direction // Defines what keyboard input results in what direction
     {
 		// Arrow Win32 Keyboard values
 		//public const int up = 0x26;
@@ -28,8 +28,7 @@ namespace JRPGProject
 		public const int right = 0x44;
 	}
 
-	// Defines the screen area
-	public class ScreenSpace
+	public class ScreenSpace // Defines the screen area. Placeholder
 	{
 		private int Width;
 		private int Height;

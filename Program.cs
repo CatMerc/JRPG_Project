@@ -12,30 +12,26 @@ namespace JRPGProject
 {
     static class Program
     {
-        public struct AppStatus
+        public struct AppStatus // Struct for killing threads once execution is done
         {
             public static bool KillThread { get; set; } = false;
         }
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Form1 form = new Form1();
-            //InputHandling input = new InputHandling(form);
             PlayerCharacter character = new PlayerCharacter(form);
-            Thread thread = new Thread(() => { debugTest(character, ref form); });
+            Thread thread = new Thread(() => { PlayerControls(character, ref form); }); // Initiates thread to handle input
             thread.Start();
-            Application.Run(form);
-            AppStatus.KillThread = true;
+            Application.Run(form); // Form blocks the main function until it closes
+            AppStatus.KillThread = true; // Once form closes send the thread kill message
         }
 
-        public static void debugTest(PlayerCharacter pc, ref Form1 form)
+        public static void PlayerControls(PlayerCharacter pc, ref Form1 form)
         {
-            Controls controls = pc.GetControls();
+            Controls controls = pc.Controls;
             while (!AppStatus.KillThread)
             {
                 if (controls.GoUp)

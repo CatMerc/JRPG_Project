@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace JRPGProject
 {
-	public class Entity
+	public class Entity // Any entity. Can be wall, can be barrel, can be ur mum
 	{
 		public string Name { get; set; }
 		public XYCoord Xy { get; set; }
@@ -42,7 +43,7 @@ namespace JRPGProject
 		}
 	}
 
-	public class NPC : Character
+	public class NPC : Character // NPC character
     {
 		public object DialogueBox { get; set; } // Placeholder code
 		public bool PcHostile { get; set; } // Hostility to player character
@@ -53,15 +54,11 @@ namespace JRPGProject
 	public class PlayerCharacter : Character
     {
 		public List<object> Inventory = new List<object>(); // List of objects
-		readonly InputHandling input;
+		public Controls Controls;
 		public PlayerCharacter(Form1 form)
 		{
-			input = new InputHandling(form);
+			Controls = new InputHandling(form).GetControls();
 
-		}
-		public Controls GetControls()
-		{
-			return input.GetControls();
 		}
     }
 }

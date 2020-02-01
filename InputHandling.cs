@@ -11,15 +11,11 @@ namespace JRPGProject
 {
     public class InputHandling
     {
-        public int State { get; private set; }
-        readonly Form Form;
-        readonly Keyboard keyboard;
+        readonly Keyboard keyboard = new Keyboard();
         public InputHandling(Form form)
         {
-            Form = form;
-            keyboard = new Keyboard();
-            Form.KeyDown += new KeyEventHandler(KeyDownState);
-            Form.KeyUp += new KeyEventHandler(KeyUpState);
+            form.KeyDown += new KeyEventHandler(KeyDownState); // Adds KeyDownState and KeyUpState as subscribers to their respective events
+            form.KeyUp += new KeyEventHandler(KeyUpState);
         }
         private void KeyDownState(object sender, System.Windows.Forms.KeyEventArgs e)
         {
@@ -47,6 +43,7 @@ namespace JRPGProject
         public bool UpArrow { get; set; }
         public bool DownArrow { get; set; }
 
+        // Sets respective property to true upon keypress
         public void SetDownState(int input)
         {
             switch (input)
@@ -66,6 +63,7 @@ namespace JRPGProject
             }
             controls.Evaluate(this);
         }
+        // Sets respective property to false upon key up 
         public void SetUpState(int input)
         {
             switch (input)
@@ -114,12 +112,12 @@ namespace JRPGProject
             GoDownRight = false;
             GoDownLeft = false;
         }
+        // Logic to determine which direction to go based upon keyboard status
         public void Evaluate(Keyboard keyboard)
         {
             SetNone();
             if (keyboard.UpArrow && !keyboard.DownArrow)
             {
-                //GoDown = false;
                 if (keyboard.LeftArrow && !keyboard.RightArrow)
                 {
                     SetGoUpLeft();
@@ -135,7 +133,6 @@ namespace JRPGProject
             }
             else if (keyboard.DownArrow && !keyboard.UpArrow)
             {
-                //GoUp = false;
                 if (keyboard.LeftArrow && !keyboard.RightArrow)
                 {
                     SetGoDownLeft();
@@ -163,6 +160,7 @@ namespace JRPGProject
             }
         }
 
+        // Sets the direction and zeroes out the rest
         public void SetGoRight()
         {
             GoRight = true;
