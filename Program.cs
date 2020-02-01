@@ -31,47 +31,41 @@ namespace JRPGProject
 
         public static void PlayerControls(PlayerCharacter pc, ref Form1 form)
         {
-            Controls controls = pc.Controls;
+            //OctaDirection Direction = pc.Controls.Direction;
             while (!AppStatus.KillThread)
             {
-                if (controls.GoUp)
+                switch (pc.Controls.Direction)
                 {
-                    form.BackColor = Color.DarkGreen;
-                }
-                else if (controls.GoDown)
-                {
-                    form.BackColor = Color.Chocolate;
-                }
-                else if (controls.GoRight)
-                {
-                    form.BackColor = Color.Black;
-                }
-                else if (controls.GoLeft)
-                {
-                    form.BackColor = Color.Red;
-                }
-                else if (controls.GoUpRight)
-                {
-                    form.BackColor = Color.IndianRed;
-                }
-                else if (controls.GoUpLeft)
-                {
-                    form.BackColor = Color.Moccasin;
-                }
-                else if (controls.GoDownLeft)
-                {
-                    form.BackColor = Color.Honeydew;
-                }
-                else if (controls.GoDownRight)
-                {
-                    form.BackColor = Color.Tomato;
-                }
-                else
-                {
-                    form.BackColor = Color.White;
+                    case CurrentControl.GoUp:
+                        form.BackColor = Color.Yellow;
+                        break;
+                    case CurrentControl.GoDown:
+                        form.BackColor = Color.Purple;
+                        break;
+                    case CurrentControl.GoRight:
+                        form.BackColor = Color.Orange;
+                        break;
+                    case CurrentControl.GoLeft:
+                        form.BackColor = Color.LightBlue;
+                        break;
+                    case CurrentControl.GoUpRight:
+                        form.BackColor = Color.FromArgb(235, 207, 52);
+                        break;
+                    case CurrentControl.GoUpLeft:
+                        form.BackColor = Color.Green;
+                        break;
+                    case CurrentControl.GoDownLeft:
+                        form.BackColor = Color.DeepSkyBlue;
+                        break;
+                    case CurrentControl.GoDownRight:
+                        form.BackColor = Color.Red;
+                        break;
+                    case CurrentControl.None:
+                        form.BackColor = Color.White;
+                        break;
                 }
             }
-        }
 
+        }
     }
 }

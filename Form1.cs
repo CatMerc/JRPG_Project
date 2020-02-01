@@ -17,7 +17,7 @@ namespace JRPGProject
         public Form1()
         {
             InitializeComponent();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox(); // Where rendering will happen
         }
     }
 }
