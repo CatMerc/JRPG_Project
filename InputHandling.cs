@@ -116,113 +116,151 @@ namespace JRPGProject
         }
         public void Evaluate(Keyboard keyboard)
         {
+            SetNone();
             if (keyboard.UpArrow && !keyboard.DownArrow)
             {
-                GoDown = false;
+                //GoDown = false;
                 if (keyboard.LeftArrow && !keyboard.RightArrow)
                 {
-                    GoRight = false;
-                    GoLeft = false;
-                    GoUp = false;
-                    GoDown = false;
-                    GoUpRight = false;
-                    GoUpLeft = true;
-                    GoDownRight = false;
-                    GoDownLeft = false;
+                    SetGoUpLeft();
                 }
                 else if (keyboard.RightArrow && !keyboard.LeftArrow)
                 {
-                    GoRight = false;
-                    GoLeft = false;
-                    GoUp = false;
-                    GoDown = false;
-                    GoUpRight = true;
-                    GoUpLeft = false;
-                    GoDownRight = false;
-                    GoDownLeft = false;
+                    SetGoUpRight();
                 }
                 else
                 {
-                    GoRight = false;
-                    GoLeft = false;
-                    GoUp = true;
-                    GoDown = false;
-                    GoUpRight = false;
-                    GoUpLeft = false;
-                    GoDownRight = false;
-                    GoDownLeft = false;
+                    SetGoUp();
                 }
             }
             else if (keyboard.DownArrow && !keyboard.UpArrow)
             {
-                GoUp = false;
+                //GoUp = false;
                 if (keyboard.LeftArrow && !keyboard.RightArrow)
                 {
-                    GoRight = false;
-                    GoLeft = false;
-                    GoUp = false;
-                    GoDown = false;
-                    GoUpRight = false;
-                    GoUpLeft = false;
-                    GoDownRight = false;
-                    GoDownLeft = true;
+                    SetGoDownLeft();
                 }
                 else if (keyboard.RightArrow && !keyboard.LeftArrow)
                 {
-                    GoRight = false;
-                    GoLeft = false;
-                    GoUp = false;
-                    GoDown = false;
-                    GoUpRight = false;
-                    GoUpLeft = false;
-                    GoDownRight = true;
-                    GoDownLeft = false;
+                    SetGoDownRight();
                 }
                 else
                 {
-                    GoRight = false;
-                    GoLeft = false;
-                    GoUp = false;
-                    GoDown = true;
-                    GoUpRight = false;
-                    GoUpLeft = false;
-                    GoDownRight = false;
-                    GoDownLeft = false;
+                    SetGoDown();
                 }
             }
             else if (keyboard.LeftArrow && !keyboard.RightArrow)
             {
-                GoRight = false;
-                GoLeft = true;
-                GoUp = false;
-                GoDown = false;
-                GoUpRight = false;
-                GoUpLeft = false;
-                GoDownRight = false;
-                GoDownLeft = false;
+                SetGoLeft();
             }
             else if (keyboard.RightArrow && !keyboard.LeftArrow)
             {
-                GoRight = true;
-                GoLeft = false;
-                GoUp = false;
-                GoDown = false;
-                GoUpRight = false;
-                GoUpLeft = false;
-                GoDownRight = false;
-                GoDownLeft = false;
+                SetGoRight();
             }
             else
             {
-                GoRight = false;
-                GoLeft = false;
-                GoUp = false;
-                GoDown = false;
-                GoUpRight = false;
-                GoUpLeft = false;
-                GoDownRight = false;
-                GoDownLeft = false;
+                SetNone();
             }
+        }
+
+        public void SetGoRight()
+        {
+            GoRight = true;
+            GoLeft = false;
+            GoUp = false;
+            GoDown = false;
+            GoUpRight = false;
+            GoUpLeft = false;
+            GoDownRight = false;
+            GoDownLeft = false;
+        }
+        public void SetGoLeft()
+        {
+            GoRight = false;
+            GoLeft = true;
+            GoUp = false;
+            GoDown = false;
+            GoUpRight = false;
+            GoUpLeft = false;
+            GoDownRight = false;
+            GoDownLeft = false;
+        }
+        public void SetGoUp()
+        {
+            GoRight = false;
+            GoLeft = false;
+            GoUp = true;
+            GoDown = false;
+            GoUpRight = false;
+            GoUpLeft = false;
+            GoDownRight = false;
+            GoDownLeft = false;
+        }
+        public void SetGoDown()
+        {
+            GoRight = false;
+            GoLeft = false;
+            GoUp = false;
+            GoDown = true;
+            GoUpRight = false;
+            GoUpLeft = false;
+            GoDownRight = false;
+            GoDownLeft = false;
+        }
+        public void SetGoUpLeft()
+        {
+            GoRight = false;
+            GoLeft = false;
+            GoUp = false;
+            GoDown = false;
+            GoUpRight = false;
+            GoUpLeft = true;
+            GoDownRight = false;
+            GoDownLeft = false;
+        }
+        public void SetGoUpRight()
+        {
+            GoRight = false;
+            GoLeft = false;
+            GoUp = false;
+            GoDown = false;
+            GoUpRight = true;
+            GoUpLeft = false;
+            GoDownRight = false;
+            GoDownLeft = false;
+        }
+        public void SetGoDownLeft()
+        {
+            GoRight = false;
+            GoLeft = false;
+            GoUp = false;
+            GoDown = false;
+            GoUpRight = false;
+            GoUpLeft = false;
+            GoDownRight = false;
+            GoDownLeft = true;
+        }
+        public void SetGoDownRight()
+        {
+            GoRight = false;
+            GoLeft = false;
+            GoUp = false;
+            GoDown = false;
+            GoUpRight = false;
+            GoUpLeft = false;
+            GoDownRight = true;
+            GoDownLeft = false;
+        }
+        public void SetNone()
+        {
+            GoRight = false;
+            GoLeft = false;
+            GoUp = false;
+            GoDown = false;
+            GoUpRight = false;
+            GoUpLeft = false;
+            GoDownRight = false;
+            GoDownLeft = false;
         }
     }
 }
